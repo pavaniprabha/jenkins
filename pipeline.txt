@@ -3,7 +3,7 @@ agent any
  stages {
   stage('Build') {
    steps {
-    rsync -r -e "ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/frontend.pem" /var/lib/jenkins/workspace/demo1/    ubuntu@10.0.0.188:/home/ubuntu/new_chatapp
+    rsync -r -e "ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/frontend.pem" /var/lib/jenkins/workspace/demo1/   ubuntu@10.0.0.188:/home/ubuntu/new_chatapp
    }
  }
  stage('Deploy') {
