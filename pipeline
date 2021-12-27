@@ -1,0 +1,15 @@
+pipeline {
+agent any
+ stages {
+  stage('Build') {
+   steps {
+    rsync -av -e "ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/frontend.pem" /var/lib/jenkins/workspace/demo1/  ubuntu@10.0.0.188:/home/ubuntu/new_chatapp
+   }
+ }
+ stage('Deploy') {
+  steps {
+   ssh -i /var/lib/jenkins/frontend.pem ubuntu@10.0.0.188 sudo systemctl restart gunicorn
+  }
+ }
+}
+}
